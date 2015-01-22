@@ -1,0 +1,2 @@
+filename	KFK	TG	LN	AP1	kortizol	GB2
+all	40	0.2	0.3	0.64	180	0.48

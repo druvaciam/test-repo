@@ -1,0 +1,20 @@
+
+Call:
+lm(formula = t10_mouth ~ kort + test, data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8788.4 -2024.9   912.5  3655.8  7063.0 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept) 10799.099   5005.352   2.158   0.0503 .
+kort          -13.281      6.092  -2.180   0.0482 *
+test          175.799    325.769   0.540   0.5986  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4862 on 13 degrees of freedom
+Multiple R-squared:  0.2737,	Adjusted R-squared:  0.162 
+F-statistic: 2.449 on 2 and 13 DF,  p-value: 0.1251
+

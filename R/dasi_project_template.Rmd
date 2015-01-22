@@ -1,0 +1,173 @@
+---
+output: html_document
+---
+
+
+<!-- For more info on RMarkdown see http://rmarkdown.rstudio.com/ -->
+
+<!-- Enter the code required to load your data in the space below. The data will be loaded but the line of code won't show up in your write up (echo=FALSE) in order to save space-->
+```{r echo=FALSE}
+library(ggplot2)
+library(scatterplot3d)
+df<-read.table("fiction002.txt", header = T, sep = "\t")
+attach(df)
+qplot(LN10X, Result, geom=c("point", "smooth"),   method="lm", formula=y~x)
+#qplot(Testosteron10X, Result, geom=c("point", "smooth"),   method="lm", formula=y~x)
+#qplot(Mochevina10X, Result, geom=c("point", "smooth"),   method="lm", formula=y~x)
+qplot(KFK10X, Result, geom=c("point", "smooth"),   method="lm", formula=y~x)
+#qplot(Kortizol10X, Result, geom=c("point", "smooth"),   method="lm", formula=y~x)
+
+s3d <-scatterplot3d(KFK10X,LN10X,Result, pch=16, highlight.3d=TRUE, lty.hplot=3,
+  type="h", main="KFK10X+LN10X")
+fit <- lm(Result ~ KFK10X+LN10X) 
+s3d$plane3d(fit)
+
+polyfit <- lm(Result ~ poly(KFK10X, LN10X, degree=2))
+
+```
+```{r setup}
+
+library(rgl)
+library(knitr)
+opts_chunk$set(cache = F)
+knit_hooks$set(rgl = hook_rgl)
+cat("<script type=\"text/javascript\">", readLines(system.file("WebGL", "CanvasMatrix.js", 
+    package = "rgl")), "</script>", sep = "\n")
+x <- sort(rnorm(1000))
+y <- rnorm(1000)
+z <- rnorm(1000) + atan2(x,y)
+
+```
+
+```{r testgl, webgl=TRUE}
+plot3d(x, y, z, col=rainbow(1000))
+```
+
+```{r, webgl=TRUE}
+spheres3d(x, y, z, col = rainbow(1000))
+```
+
+```{r, webgl=TRUE}
+plot3d(KFK10X,LN10X,Result, col=rainbow(1000))
+```
+
+```{r persp3dlm, echo=FALSE}
+persp3d.lm <- function(x, form, at, bounds, zlim, zlab, xlabs, col = "white", 
+    contours = NULL, hook, atpos = 3, decode = TRUE, theta = -25, 
+    phi = 20, r = 4, border = NULL, box = TRUE, ticktype = "detailed", 
+    ...) 
+{
+    draw.cont.line = function(line) {
+        if (cont.varycol) {
+            cont.col = col
+            if (length(col) > 1) 
+                cont.col = col[cut(c(line$level, dat$zlim), length(col))][1]
+        }
+        lines(trans3d(line$x, line$y, cont.z, transf), col = cont.col, 
+            lwd = cont.lwd)
+    }
+    plot.data = contour.lm(x, form, at, bounds, zlim, xlabs, 
+        atpos = atpos, plot.it = FALSE)
+    transf = list()
+    if (missing(zlab)) 
+        zlab = ""
+    facet.col = col
+    cont = !is.null(contours)
+    if (mode(contours) == "logical") 
+        cont = contours
+    cont.first = cont
+    cont.z = cz = plot.data[[1]]$zlim[1]
+    cont.col = 1
+    cont.varycol = FALSE
+    cont.lwd = 1
+    if (is.character(contours)) {
+        idx = charmatch(contours, c("top", "bottom", "colors"), 
+            0)
+        if (idx == 1) {
+            cont.first = FALSE
+            cont.z = plot.data[[1]]$zlim[2]
+        }
+        else if (idx == 2) {
+        }
+        else if (idx == 3) {
+            cont.varycol = TRUE
+            if (length(col) < 2) 
+                col = rainbow(40)
+        }
+        else cont.col = contours
+    }
+    else if (is.list(contours)) {
+        if (!is.null(contours$z)) 
+            cz = contours$z
+        if (is.numeric(cz)) 
+            cont.z = cz
+        else if (cz == "top") {
+            cont.first = FALSE
+            cont.z = plot.data[[1]]$zlim[2]
+        }
+        if (!is.null(contours$col)) 
+            cont.col = contours$col
+        if (!is.null(contours$lwd)) 
+            cont.lwd = contours$lwd
+        if (charmatch(cont.col, "colors", 0) == 1) {
+            cont.varycol = TRUE
+            if (length(col) < 2) 
+                col = rainbow(40)
+        }
+    }
+    for (i in 1:length(plot.data)) {
+        dat = plot.data[[i]]
+        cont.lines = NULL
+        if (!missing(hook)) 
+            if (!is.null(hook$pre.plot)) 
+                hook$pre.plot(dat$labs)
+        if (cont) 
+            cont.lines = contourLines(dat$x, dat$y, dat$z)
+        if (cont && cont.first) {
+            transf = persp3d(dat$x, dat$y, dat$z, zlim = dat$zlim, 
+                theta = theta, phi = phi, r = r, col = NA, border = NA, 
+                box = FALSE, ...)
+            lapply(cont.lines, draw.cont.line)
+            par(new = TRUE)
+        }
+        if (length(col) > 1) {
+            nrz = nrow(dat$z)
+            ncz = ncol(dat$z)
+            zfacet = dat$z[-1, -1] + dat$z[-1, -ncz] + dat$z[-nrz, 
+                -1] + dat$z[-nrz, -ncz]
+            zfacet = c(zfacet/4, dat$zlim)
+            facet.col = cut(zfacet, length(col))
+            facet.col = col[facet.col]
+        }
+        transf = persp3d(dat$x, dat$y, dat$z, xlab = dat$labs[1], 
+            ylab = dat$labs[2], zlab = zlab, zlim = dat$zlim, 
+            col = facet.col, border = border, box = box, theta = theta, 
+            phi = phi, r = r, ticktype = ticktype, ...)
+        if (atpos == 3) 
+            #title(sub = dat$labs[5], ...)
+        if (cont && !cont.first) 
+            lapply(cont.lines, draw.cont.line)
+        if (!missing(hook)) 
+            if (!is.null(hook$post.plot)) 
+                hook$post.plot(dat$labs)
+        plot.data[[i]]$transf = transf
+    }
+#    plot.data
+    invisible(plot.data)
+}
+```
+
+```{r rgl-persp3dlm, message=FALSE, webgl=TRUE, error=FALSE, results='hide'}
+library(rsm)
+swiss2.lm <- lm(Fertility ~ poly(Agriculture, Education, degree=2), data=swiss)
+open3d()
+persp3d.lm(swiss2.lm, Education ~ Agriculture, zlab = "Fertility")
+```
+
+
+
+```{r}
+sessionInfo()
+```
+<!-- In the remainder of the document, add R code chunks as needed -->
+

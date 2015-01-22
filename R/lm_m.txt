@@ -1,0 +1,256 @@
+
+Call:
+lm(formula = t10_mouth ~ kort + test, data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8788.4 -2024.9   912.5  3655.8  7063.0 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept) 10799.099   5005.352   2.158   0.0503 .
+kort          -13.281      6.092  -2.180   0.0482 *
+test          175.799    325.769   0.540   0.5986  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4862 on 13 degrees of freedom
+Multiple R-squared:  0.2737,	Adjusted R-squared:  0.162 
+F-statistic: 2.449 on 2 and 13 DF,  p-value: 0.1251
+
+
+Call:
+lm(formula = t10_mouth ~ kort + test + ln, data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8490.9 -2385.4   954.7  3618.3  7250.8 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)
+(Intercept)  8846.281   8242.346   1.073    0.304
+kort          -12.390      6.961  -1.780    0.100
+test          228.439    379.315   0.602    0.558
+ln           3875.438  12707.799   0.305    0.766
+
+Residual standard error: 5041 on 12 degrees of freedom
+Multiple R-squared:  0.2793,	Adjusted R-squared:  0.0991 
+F-statistic:  1.55 on 3 and 12 DF,  p-value: 0.2525
+
+
+Call:
+lm(formula = t10_mouth ~ log(kort) + log(test), data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8205.1 -2614.7   227.6  3018.6  7404.1 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)    28463      12821   2.220   0.0448 *
+log(kort)      -4713       1911  -2.466   0.0283 *
+log(test)       2677       3685   0.726   0.4805  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4707 on 13 degrees of freedom
+Multiple R-squared:  0.3193,	Adjusted R-squared:  0.2146 
+F-statistic: 3.049 on 2 and 13 DF,  p-value: 0.08208
+
+
+Call:
+lm(formula = t10_mouth ~ log(kort) + log(test) + log(ln), data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8385.9 -2605.4   534.8  3229.4  7056.9 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)  29586.4    14043.6   2.107   0.0569 .
+log(kort)    -4971.1     2234.4  -2.225   0.0460 *
+log(test)     2415.3     3965.3   0.609   0.5538  
+log(ln)       -650.6     2594.6  -0.251   0.8063  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4886 on 12 degrees of freedom
+Multiple R-squared:  0.3228,	Adjusted R-squared:  0.1535 
+F-statistic: 1.907 on 3 and 12 DF,  p-value: 0.1823
+
+
+Call:
+lm(formula = t10_mouth ~ sqrt(kort) + sqrt(test), data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8505.4 -2451.7   909.2  3257.0  7269.5 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)  13167.5     8498.2   1.549   0.1453  
+sqrt(kort)    -542.4      228.2  -2.377   0.0335 *
+sqrt(test)    1426.9     2200.3   0.649   0.5279  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4755 on 13 degrees of freedom
+Multiple R-squared:  0.3053,	Adjusted R-squared:  0.1984 
+F-statistic: 2.857 on 2 and 13 DF,  p-value: 0.09368
+
+
+Call:
+lm(formula = t10_mouth ~ sqrt(kort) + sqrt(test) + sqrt(ln), 
+    data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8528.1 -2418.5   930.3  3274.8  7243.0 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)  13457.1    14305.3   0.941   0.3654  
+sqrt(kort)    -545.5      266.4  -2.047   0.0632 .
+sqrt(test)    1403.3     2466.5   0.569   0.5799  
+sqrt(ln)      -310.4    12049.9  -0.026   0.9799  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4949 on 12 degrees of freedom
+Multiple R-squared:  0.3053,	Adjusted R-squared:  0.1317 
+F-statistic: 1.758 on 3 and 12 DF,  p-value: 0.2085
+
+
+Call:
+lm(formula = t10_mouth ~ sqrt(kort) + sqrt(test) + kort + test, 
+    data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5872.3 -2631.8   526.8  2210.0  5901.6 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept) 127988.54   50927.47   2.513   0.0288 *
+sqrt(kort)   -2721.35    1338.10  -2.034   0.0668 .
+sqrt(test)  -59024.15   27971.52  -2.110   0.0586 .
+kort            60.02      35.54   1.689   0.1193  
+test          9108.10    4155.12   2.192   0.0508 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4233 on 11 degrees of freedom
+Multiple R-squared:  0.5342,	Adjusted R-squared:  0.3649 
+F-statistic: 3.154 on 4 and 11 DF,  p-value: 0.05891
+
+
+Call:
+lm(formula = t10_mouth ~ sqrt(kort) + sqrt(test) + sqrt(ln) + 
+    kort + test + ln, data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5708.9 -2532.9  -242.6  2285.7  5975.3 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept) 138659.59   63244.80   2.192   0.0560 .
+sqrt(kort)   -2501.60    1823.08  -1.372   0.2032  
+sqrt(test)  -63716.30   34228.70  -1.861   0.0956 .
+sqrt(ln)    -27752.97   76928.88  -0.361   0.7266  
+kort            55.61      45.12   1.233   0.2490  
+test          9820.42    5119.60   1.918   0.0873 .
+ln           30929.43   87458.57   0.354   0.7317  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4646 on 9 degrees of freedom
+Multiple R-squared:  0.5409,	Adjusted R-squared:  0.2348 
+F-statistic: 1.767 on 6 and 9 DF,  p-value: 0.2124
+
+
+Call:
+lm(formula = t10_mouth ~ log(kort) + log(test) + log(ln) + kort + 
+    test + ln, data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5829.3 -2391.3  -231.8  2296.9  5856.4 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept) 117314.83   58319.74   2.012   0.0751 .
+log(kort)   -10902.72    7563.55  -1.441   0.1833  
+log(test)   -49311.82   27868.72  -1.769   0.1106  
+log(ln)      -2194.85    8316.64  -0.264   0.7978  
+kort            22.31      21.00   1.063   0.3157  
+test          4812.18    2566.77   1.875   0.0936 .
+ln           11834.77   47026.10   0.252   0.8070  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4684 on 9 degrees of freedom
+Multiple R-squared:  0.5333,	Adjusted R-squared:  0.2222 
+F-statistic: 1.714 on 6 and 9 DF,  p-value: 0.2243
+
+
+Call:
+lm(formula = t10_mouth ~ kort * kort + test * test, data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8788.4 -2024.9   912.5  3655.8  7063.0 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept) 10799.099   5005.352   2.158   0.0503 .
+kort          -13.281      6.092  -2.180   0.0482 *
+test          175.799    325.769   0.540   0.5986  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4862 on 13 degrees of freedom
+Multiple R-squared:  0.2737,	Adjusted R-squared:  0.162 
+F-statistic: 2.449 on 2 and 13 DF,  p-value: 0.1251
+
+
+Call:
+lm(formula = t10_mouth ~ kort * kort + test * test + kort + test, 
+    data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8788.4 -2024.9   912.5  3655.8  7063.0 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept) 10799.099   5005.352   2.158   0.0503 .
+kort          -13.281      6.092  -2.180   0.0482 *
+test          175.799    325.769   0.540   0.5986  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4862 on 13 degrees of freedom
+Multiple R-squared:  0.2737,	Adjusted R-squared:  0.162 
+F-statistic: 2.449 on 2 and 13 DF,  p-value: 0.1251
+
+
+Call:
+lm(formula = t10_mouth ~ kort * kort + test * test + test * kort + 
+    kort + test, data = s$m)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8740.7 -2134.2  -343.2  3936.2  6158.8 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)
+(Intercept) 16518.478  10576.309   1.562    0.144
+kort          -27.728     24.183  -1.147    0.274
+test         -354.143    919.750  -0.385    0.707
+kort:test       1.300      2.103   0.618    0.548
+
+Residual standard error: 4982 on 12 degrees of freedom
+Multiple R-squared:  0.2961,	Adjusted R-squared:  0.1201 
+F-statistic: 1.683 on 3 and 12 DF,  p-value: 0.2234
+
